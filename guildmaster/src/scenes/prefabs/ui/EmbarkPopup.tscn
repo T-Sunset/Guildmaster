@@ -1,0 +1,125 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv8utrfqjafsg"]
+
+[ext_resource type="Script" uid="uid://bjkejvd1ablcs" path="res://src/scripts/specific/embark_popup.gd" id="1_ha6fq"]
+[ext_resource type="PackedScene" uid="uid://dndvliikpwvu2" path="res://src/scenes/prefabs/ui/QuestRosterHero.tscn" id="2_1q0tk"]
+
+[node name="EmbarkPopup" type="PanelContainer"]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.5
+anchor_right = 0.8
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ha6fq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Contents" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="EmbarkLabel" type="Label" parent="MarginContainer/Contents"]
+layout_mode = 2
+text = "Embarking Menu"
+
+[node name="CurrentQuestLabel" type="Label" parent="MarginContainer/Contents"]
+layout_mode = 2
+text = "Current Quest:"
+
+[node name="QuestContentParent" type="VBoxContainer" parent="MarginContainer/Contents"]
+layout_mode = 2
+
+[node name="QuestRosterLabel" type="Label" parent="MarginContainer/Contents"]
+layout_mode = 2
+text = "Quest Roster:"
+
+[node name="QuestRosterParent" type="VBoxContainer" parent="MarginContainer/Contents"]
+layout_mode = 2
+
+[node name="QuestRosterRow" type="HBoxContainer" parent="MarginContainer/Contents/QuestRosterParent"]
+layout_mode = 2
+
+[node name="QuestRosterHero" parent="MarginContainer/Contents/QuestRosterParent/QuestRosterRow" instance=ExtResource("2_1q0tk")]
+layout_mode = 2
+
+[node name="QuestRosterHero2" parent="MarginContainer/Contents/QuestRosterParent/QuestRosterRow" instance=ExtResource("2_1q0tk")]
+layout_mode = 2
+
+[node name="QuestRosterHero3" parent="MarginContainer/Contents/QuestRosterParent/QuestRosterRow" instance=ExtResource("2_1q0tk")]
+layout_mode = 2
+
+[node name="QuestRosterSelectorLabel" type="Label" parent="MarginContainer/Contents/QuestRosterParent"]
+visible = false
+layout_mode = 2
+text = "Hero to Add:"
+
+[node name="QuestRosterScrollview" type="ScrollContainer" parent="MarginContainer/Contents/QuestRosterParent"]
+visible = false
+custom_minimum_size = Vector2(0, 450)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="QuestRoster" type="VBoxContainer" parent="MarginContainer/Contents/QuestRosterParent/QuestRosterScrollview"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ProjectedResultsLabel" type="Label" parent="MarginContainer/Contents"]
+layout_mode = 2
+text = "Projected Results:"
+
+[node name="ChanceRow" type="HBoxContainer" parent="MarginContainer/Contents"]
+layout_mode = 2
+
+[node name="AptitudeLabel" type="Label" parent="MarginContainer/Contents/ChanceRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Aptitude: 28 ~ 35"
+
+[node name="DifficultyLabel" type="Label" parent="MarginContainer/Contents/ChanceRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Difficulty: 30"
+
+[node name="ChanceRow2" type="HBoxContainer" parent="MarginContainer/Contents"]
+layout_mode = 2
+
+[node name="DamageLabel" type="Label" parent="MarginContainer/Contents/ChanceRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Damage: 50 ~ 75"
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/Contents/ChanceRow2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Time: XXh XXm XXs (-102s)"
+
+[node name="ChanceRow3" type="HBoxContainer" parent="MarginContainer/Contents"]
+layout_mode = 2
+
+[node name="ChanceLabel" type="Label" parent="MarginContainer/Contents/ChanceRow3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Success Chance: ~75%"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Contents"]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="MarginContainer/Contents/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Close"
+
+[node name="EmbarkButton" type="Button" parent="MarginContainer/Contents/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "EMBARK!"
+
+[connection signal="pressed" from="MarginContainer/Contents/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Contents/HBoxContainer/EmbarkButton" to="." method="_on_embark_button_pressed"]

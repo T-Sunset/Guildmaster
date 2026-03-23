@@ -1,0 +1,191 @@
+[gd_scene load_steps=2 format=3 uid="uid://qxoqkgwjln7n"]
+
+[ext_resource type="Script" uid="uid://k108d4tqb2tl" path="res://src/scripts/specific/hero_display.gd" id="1_b2vyd"]
+
+[node name="HeroDisplay" type="VBoxContainer"]
+script = ExtResource("1_b2vyd")
+
+[node name="TopRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Portrait" type="TextureRect" parent="TopRow"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="TopRow"]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Reginald Wetherby"
+
+[node name="ClassRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ClassLabel" type="Label" parent="ClassRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Barbarian"
+vertical_alignment = 1
+
+[node name="ClassLevel" type="Label" parent="ClassRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lv 100 (1200) | EXP: 3/426"
+vertical_alignment = 1
+
+[node name="HealthRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="HealthRow"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+step = 1.0
+value = 93.0
+rounded = true
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="HealthRow/HealthBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100/100 HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SimpleRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="SimpleStats" type="Label" parent="SimpleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "STR: 100 | INT: 100 | DEX: 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Expanded" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="StatGrid" type="GridContainer" parent="Expanded"]
+layout_mode = 2
+columns = 2
+
+[node name="Strength" type="Label" parent="Expanded/StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "STR: 100"
+
+[node name="Endurance" type="Label" parent="Expanded/StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "END: 100"
+
+[node name="Intellect" type="Label" parent="Expanded/StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INT: 100"
+
+[node name="Willpower" type="Label" parent="Expanded/StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "WIL: 100"
+
+[node name="Dexterity" type="Label" parent="Expanded/StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DEX: 100"
+
+[node name="Agility" type="Label" parent="Expanded/StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "AGI: 100"
+
+[node name="Luck" type="Label" parent="Expanded/StatGrid"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "LUK: 100"
+
+[node name="Spacer" type="Control" parent="Expanded"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="EquipmentHeader" type="Label" parent="Expanded"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "EQUIPMENT:"
+
+[node name="Weapon" type="Label" parent="Expanded"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Weapon: ---"
+
+[node name="Armour" type="Label" parent="Expanded"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Armour: ---"
+
+[node name="Accessory" type="Label" parent="Expanded"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Accessory: ---"
+
+[node name="Spacer2" type="Control" parent="Expanded"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TraitLabel" type="Label" parent="Expanded"]
+layout_mode = 2
+text = "Traits: (5/5)
+- Eagle-Eyed III
+- Reckless II"
+
+[node name="Buttons" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="MoreLess" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Show/Hide Stats"
+
+[node name="HireHero" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+ Hire Hero"
+
+[node name="HireThisHero" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "+ Hire"
+
+[node name="ReclassButton" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reclass"
+
+[node name="FireThisHero" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "- Fire"
+
+[node name="Timer" type="Timer" parent="Buttons/FireThisHero"]
+wait_time = 3.0
+one_shot = true
+ignore_time_scale = true
+
+[node name="SelectHero" type="Button" parent="Buttons"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Select Hero"
+
+[connection signal="pressed" from="Buttons/MoreLess" to="." method="_on_more_less_pressed"]
+[connection signal="pressed" from="Buttons/HireHero" to="." method="_on_hire_any_hero_pressed"]
+[connection signal="pressed" from="Buttons/HireThisHero" to="." method="_on_hire_this_hero_pressed"]
+[connection signal="pressed" from="Buttons/ReclassButton" to="." method="_on_reclass_button_pressed"]
+[connection signal="pressed" from="Buttons/FireThisHero" to="." method="_on_fire_this_hero_pressed"]
+[connection signal="timeout" from="Buttons/FireThisHero/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Buttons/SelectHero" to="." method="_on_select_hero_pressed"]

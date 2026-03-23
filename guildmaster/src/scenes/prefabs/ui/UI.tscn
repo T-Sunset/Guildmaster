@@ -1,0 +1,267 @@
+[gd_scene load_steps=8 format=3 uid="uid://blurgwdq5bj82"]
+
+[ext_resource type="Script" uid="uid://benb5hyamf653" path="res://src/scripts/global/ui_manager.gd" id="1_txvf1"]
+[ext_resource type="PackedScene" uid="uid://dgsmiij44dvj5" path="res://src/scenes/prefabs/ui/RecruitPopup.tscn" id="2_fdn33"]
+[ext_resource type="PackedScene" uid="uid://dv8utrfqjafsg" path="res://src/scenes/prefabs/ui/EmbarkPopup.tscn" id="3_eykdh"]
+[ext_resource type="PackedScene" uid="uid://cp1h7bmbi0gmy" path="res://src/scenes/prefabs/ui/FacilityPopup.tscn" id="4_l48y5"]
+[ext_resource type="PackedScene" uid="uid://bp62xhqg141rg" path="res://src/scenes/prefabs/ui/ReclassPopup.tscn" id="5_75qi2"]
+[ext_resource type="PackedScene" uid="uid://dm64q4usotdql" path="res://src/scenes/prefabs/ui/DailyEventPopup.tscn" id="6_7wsrg"]
+[ext_resource type="PackedScene" uid="uid://qqyvxriwmvis" path="res://src/scenes/prefabs/ui/DailyLoginTrack.tscn" id="7_rmcey"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_txvf1")
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Row" type="HBoxContainer" parent="TopBar/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GoldLabel" type="Label" parent="TopBar/MarginContainer/Row"]
+layout_mode = 2
+text = "Gold: 0"
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="TopBar/MarginContainer/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InfluenceLabel" type="Label" parent="TopBar/MarginContainer/Row"]
+layout_mode = 2
+text = "Influence: 0"
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="BottomBar" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="BottomBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="Row" type="HBoxContainer" parent="BottomBar/MarginContainer"]
+layout_mode = 2
+
+[node name="HeroesButton" type="Button" parent="BottomBar/MarginContainer/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Heroes"
+
+[node name="QuestsButton" type="Button" parent="BottomBar/MarginContainer/Row"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Quests"
+
+[node name="GuildButton" type="Button" parent="BottomBar/MarginContainer/Row"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Guild"
+
+[node name="HeroPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.05
+anchor_right = 0.7
+anchor_bottom = 0.91
+offset_left = -1000.0
+offset_right = -1000.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HeroPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HeroPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="HeroPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Heroes ( X / Y )"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HeroPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HeroList" type="VBoxContainer" parent="HeroPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RecruitPopup" parent="." instance=ExtResource("2_fdn33")]
+visible = false
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 1
+
+[node name="QuestPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.05
+anchor_right = 0.85
+anchor_bottom = 0.91
+offset_top = 1336.0
+offset_bottom = 1336.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="QuestPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="QuestPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="AvailableQuestLabel" type="Label" parent="QuestPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Available Quests"
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="QuestPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AvailableQuestList" type="VBoxContainer" parent="QuestPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RefreshButton" type="Button" parent="QuestPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Refresh (-1 Influence)"
+
+[node name="CurrentQuestLabel" type="Label" parent="QuestPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Current Quests"
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="QuestPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CurrentQuestList" type="VBoxContainer" parent="QuestPanel/MarginContainer/VBoxContainer/ScrollContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EmbarkPopup" parent="." instance=ExtResource("3_eykdh")]
+visible = false
+layout_mode = 1
+
+[node name="GuildPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.05
+anchor_right = 1.0
+anchor_bottom = 0.91
+offset_left = 767.165
+offset_right = 767.165
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GuildPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GuildPanel/MarginContainer"]
+layout_mode = 2
+
+[node name="GuildLabel" type="Label" parent="GuildPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Guild Hall Facilities"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="GuildPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FacilityList" type="VBoxContainer" parent="GuildPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FacilityPopup" parent="." instance=ExtResource("4_l48y5")]
+visible = false
+layout_mode = 1
+
+[node name="ReclassPopup" parent="." instance=ExtResource("5_75qi2")]
+visible = false
+layout_mode = 1
+
+[node name="DailyEventButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.25
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+tooltip_text = "Asdf"
+
+[node name="DailyEventPopup" parent="." instance=ExtResource("6_7wsrg")]
+visible = false
+layout_mode = 1
+
+[node name="LoginTrackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_top = 0.3
+anchor_right = 1.0
+anchor_bottom = 0.35
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+tooltip_text = "Asdf"
+text = "Daily Login"
+autowrap_mode = 2
+
+[node name="DailyLoginTrack" parent="." instance=ExtResource("7_rmcey")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="QuestPanel/MarginContainer/VBoxContainer/RefreshButton" to="." method="_on_refresh_button_pressed"]
+[connection signal="pressed" from="DailyEventButton" to="." method="_on_daily_event_button_pressed"]
+[connection signal="pressed" from="LoginTrackButton" to="." method="_on_login_track_button_pressed"]

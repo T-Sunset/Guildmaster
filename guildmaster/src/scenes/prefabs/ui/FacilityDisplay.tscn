@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqt6xwvqw5054"]
+
+[ext_resource type="Script" uid="uid://d1qeiy20ics3y" path="res://src/scripts/specific/facility_display.gd" id="1_v22sb"]
+
+[node name="FacilityDisplay" type="VBoxContainer"]
+script = ExtResource("1_v22sb")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Row" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="FacilityIconButton" type="Button" parent="PanelContainer/MarginContainer/Row"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+text = "+"
+
+[node name="Spacer" type="Control" parent="PanelContainer/MarginContainer/Row"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/Row"]
+layout_mode = 2
+
+[node name="FacilityLabel" type="Label" parent="PanelContainer/MarginContainer/Row/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+text = "Facility Name"
+
+[node name="FacilityLevelLabel" type="Label" parent="PanelContainer/MarginContainer/Row/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 10
+text = "Lv 0 / 10"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/Row/FacilityIconButton" to="." method="_on_facility_icon_button_pressed"]

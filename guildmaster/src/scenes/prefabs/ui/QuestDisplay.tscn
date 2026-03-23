@@ -1,0 +1,164 @@
+[gd_scene load_steps=2 format=3 uid="uid://cji80e1n6gdp8"]
+
+[ext_resource type="Script" uid="uid://fhbcs7f0e5g3" path="res://src/scripts/specific/quest_display.gd" id="1_i0gu2"]
+
+[node name="QuestDisplay" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_i0gu2")
+
+[node name="RowA" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="QuestNameLabel" type="Label" parent="RowA"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "QUEST NAME"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="RowA"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuestDifficultyLabel" type="Label" parent="RowA"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Difficulty 5"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Control2" type="Control" parent="RowA"]
+custom_minimum_size = Vector2(8, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuestDurationLabel" type="Label" parent="RowA"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1m 30s"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RowB" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="StrengthLabel" type="Label" parent="RowB"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "STR: A"
+
+[node name="IntelligenceLabel" type="Label" parent="RowB"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "INT: A"
+horizontal_alignment = 1
+
+[node name="DexterityLabel" type="Label" parent="RowB"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "DEX: A"
+horizontal_alignment = 2
+
+[node name="RowC" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="DColA" type="VBoxContainer" parent="RowC"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="RowC/DColA"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HeroLabel" type="Label" parent="RowC/DColA"]
+layout_mode = 2
+text = "(Empty Slot)"
+horizontal_alignment = 1
+
+[node name="DColA2" type="VBoxContainer" parent="RowC"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="RowC/DColA2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HeroLabel" type="Label" parent="RowC/DColA2"]
+layout_mode = 2
+text = "(Empty Slot)"
+horizontal_alignment = 1
+
+[node name="DColA3" type="VBoxContainer" parent="RowC"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="RowC/DColA3"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="HeroLabel" type="Label" parent="RowC/DColA3"]
+layout_mode = 2
+text = "(Empty Slot)"
+horizontal_alignment = 1
+
+[node name="RowD" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="RarityLabel" type="Label" parent="RowD"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "(Common)"
+
+[node name="Available" type="Control" parent="RowD"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EmbarkButton" type="Button" parent="RowD/Available"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Embark!"
+
+[node name="Active" type="Control" parent="RowD"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuestTimerBar" type="ProgressBar" parent="RowD/Active"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 26.89
+
+[node name="Finished" type="Control" parent="RowD"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FinishButton" type="Button" parent="RowD/Finished"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "Critical Success!
++250g! +1i! -250hp!
+Click to Clear!"
+
+[connection signal="pressed" from="RowD/Available/EmbarkButton" to="." method="_on_embark_button_pressed"]
+[connection signal="pressed" from="RowD/Finished/FinishButton" to="." method="_on_finish_button_pressed"]
